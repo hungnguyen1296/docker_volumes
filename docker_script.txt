@@ -1,0 +1,11 @@
+run in power shell
+
+export volume:
+docker run --rm -v n8n_data:/volume -v ${PWD}:/backup busybox tar cvf /backup/n8n_data.tar /volume
+
+backup/import volumn:
+docker volume create n8n_data
+docker run --rm -v n8n_data:/volume -v ${PWD}:/backup busybox sh -c "cd /volume && tar xvf /backup/n8n_data.tar --strip 1"
+
+check:
+docker run --rm -v n8n_data:/data busybox ls /data
