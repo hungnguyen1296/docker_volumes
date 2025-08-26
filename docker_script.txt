@@ -9,3 +9,13 @@ docker run --rm -v n8n_data:/volume -v ${PWD}:/backup busybox sh -c "cd /volume 
 
 check:
 docker run --rm -v n8n_data:/data busybox ls /data
+
+run container:
+docker run -it --name n8n -p 5678:5678 ^
+  -e GENERIC_TIMEZONE="Asia/Ho_Chi_Minh" ^
+  -e TZ="Asia/Ho_Chi_Minh" ^
+  -e N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true ^
+  -e N8N_RUNNERS_ENABLED=true ^
+  -e N8N_ENCRYPTION_KEY="PtczZJ5p8769QrEO4k14jlwL3iACUXG9" ^
+  -v n8n_data:/home/node/.n8n ^
+  hungnguyen1296/ai_workflow_automation
